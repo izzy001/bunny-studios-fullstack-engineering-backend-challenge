@@ -44,9 +44,10 @@ exports.updateUser = async (req, res) => {
     if (!user) return res.status(404).send({
         details: 'This user does not exist!'
     });
-    res.send({ 
+    res.send({
         message: 'user updated successfully!',
-        details: user });
+        details: user
+    });
 };
 
 exports.deleteUser = async (req, res) => {

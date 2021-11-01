@@ -48,7 +48,7 @@ function validateTask(task) {
 };
 
 //validate update task list
-function validateNewTask(task){
+function validateNewTask(task) {
     const schema = Joi.object({
         tasks: Joi.object().required(),
     });
@@ -56,7 +56,7 @@ function validateNewTask(task){
 }
 
 //validate a single task data
-function validateSingleTask(task){
+function validateSingleTask(task) {
     const schema = Joi.object({
         state: Joi.string().valid('To-Do', 'done').required()
     });

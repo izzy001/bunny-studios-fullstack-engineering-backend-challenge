@@ -19,7 +19,7 @@ exports.getUserTask = async (req, res) => {
 
 
 exports.createNewTask = async (req, res) => {
-     //create new task
+    //create new task
     //Object Id Validation
     // if (!mongoose.Types.ObjectId.isValid(req.body.user_id))
     //     return res.status(404).send('Invalid user');
@@ -59,14 +59,14 @@ exports.updateTaskList = async (req, res) => {
 
     //check if task ID exists
     const taskId = await Task.findById(req.params.id);
-   // console.log('This is the taskId '+ taskId);
-    if(!taskId) return res.status(404).send('Invalid task id');
+    // console.log('This is the taskId '+ taskId);
+    if (!taskId) return res.status(404).send('Invalid task id');
     const task = await Task.findByIdAndUpdate(
         { _id: req.params.id },
         { $addToSet: { tasks: req.body.tasks } },
         { safe: true, multi: true, new: true }
     );
-   
+
     res.send({
         message: 'Task List updated successfully',
         details: task
@@ -80,6 +80,7 @@ exports.updateSingleTaskStatus = async (req, res) => {
     if (error) return res.status(400).send({
         validation_error: error.details[0].message
     });
+    
     const task = await Task.findOneAndUpdate({ 'tasks._id': req.params.id }, { $set: { 'tasks.$.state': req.body.state } }, { new: true });
     if (!task) return res.status(404).send('Task not found');
 
