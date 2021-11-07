@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const { Task } = require('../models/task');
 const { User, validate } = require('../models/user');
 
 exports.getAllUsers = async (req, res) => {
@@ -51,8 +52,8 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-
     const user = await User.findByIdAndRemove(req.params.id);
+    await Task.findOneAndDelete({ "user._id": req.params.id })
     if (!user) return res.status(404).send({
         details: 'This user does not exist!'
     });
