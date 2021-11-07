@@ -19,11 +19,6 @@ exports.getUserTask = async (req, res) => {
 
 
 exports.createNewTask = async (req, res) => {
-    //create new task
-    //Object Id Validation
-    // if (!mongoose.Types.ObjectId.isValid(req.body.user_id))
-    //     return res.status(404).send('Invalid user');
-
     //validate task data
     const { error } = validate(req.body);
     if (error) return res.status(400).send({
@@ -80,7 +75,7 @@ exports.updateSingleTaskStatus = async (req, res) => {
     if (error) return res.status(400).send({
         validation_error: error.details[0].message
     });
-    
+
     const task = await Task.findOneAndUpdate({ 'tasks._id': req.params.id }, { $set: { 'tasks.$.state': req.body.state } }, { new: true });
     if (!task) return res.status(404).send('Task not found');
 
