@@ -23,7 +23,7 @@ To setup the app,
 ## Folder Structure
 
 ```
-Schedool-api/
+task-api/
   .github
   node_modules/
   config/
