@@ -21,7 +21,7 @@ To setup the app,
 1. Clone the app to your local machine and run `npm install`
 2. Then run `npm start`
 
-##Running tests
+## Running tests
 run `npm test`
 
 
