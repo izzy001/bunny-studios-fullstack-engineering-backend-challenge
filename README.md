@@ -12,6 +12,7 @@ This codebase is the **REST API** for the [Task app](https://bunny-task-ui.netli
 - NodeJS
 - MongoDB
 - Express
+- Jest(testing)
 
 ## Setup
 
@@ -19,6 +20,10 @@ To setup the app,
 
 1. Clone the app to your local machine and run `npm install`
 2. Then run `npm start`
+
+##Running tests
+run `npm test`
+
 
 ## Folder Structure
 
